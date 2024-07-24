@@ -1,0 +1,45 @@
+from market import app,db
+>>> with app.app_context():
+...     db.drop_all()
+...     db.create_all()
+...     print("All tables dropped and recreated")
+... 
+All tables dropped and recreated
+
+from market import app, db                    
+>>> from market.models import User, Item
+>>> with app.app_context():
+...     u1 = User(username="ash", password_hash="123456", email_address="ash@gmail.com")
+...     db.session.add(u1)
+...     db.session.commit()
+...     print("User added successfully.")
+...
+
+
+from market import app, db
+>>> from market.models import User, Item
+>>> with app.app_context():
+...     item1 = Item(name="Logitech Keyboard", pri
+ce=500, barcode="9702220946", description="Mechani
+cal keyboard")
+...     item2 = Item(name="Hp Mini Desktop", price=2500, barcode="9702220947", description="Small form factor desktop")   
+...     item3 = Item(name="DellDesktop", price=5000, barcode="9702220948", description="High-performance desktop")  
+...     db.session.add(item1)
+...     db.session.add(item2)
+...     db.session.add(item3) 
+...     db.session.commit()
+...     print("Items added successfully")
+...
+Items added successfully
+>>> from market import app, db
+>>> from market.models import User, Item
+>>> with app.app_context():
+...     users = User.query.all()
+...     items = Item.query.all()
+...     print("Users:", users)
+...     print("Items:", items)
+...
+Users: [<User 1>]
+Items: [Item Logitech Keyboard, Item Hp Mini Desktop, Item DellDesktop]
+>>>
+
